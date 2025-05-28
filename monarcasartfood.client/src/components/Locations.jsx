@@ -1,17 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, Clock, Phone } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const Locations = () => {
     const locations = [
         {
             id: 1,
-            name: "Villa Nueva",
-            address: "Calle 40A # 27 - 36",
+            name: "Monarcas Art Food",
+            address: "Cl. 40a #27-36, Bogotá, Colombia",
             hours: "6:30 - 10:00",
             phone: "+57 3138596605",
-            lat: 4.60971,
-            lng: -74.08175,
+            lat: 5.063377,    // Latitud obtenida de Google Maps
+            lng: -75.507731,   // Longitud obtenida de Google Maps
         },
     ];
 
@@ -74,18 +76,23 @@ const Locations = () => {
                                     </div>
                                 </div>
 
-                                {/* Mapa de Google Maps con iframe */}
+                                {/* Mapa de Leaflet */}
                                 <div className="mt-4 rounded overflow-hidden shadow-lg">
-                                    <iframe
-                                        title={`Mapa de ${location.name}`}
-                                        width="100%"
-                                        height="300"
-                                        src={`https://maps.google.com/maps?q=${location.address}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
-                                        style={{ border: 0 }}
-                                        allowFullScreen=""
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                    ></iframe>
+                                    <MapContainer
+                                        center={[location.lat, location.lng]}
+                                        zoom={15}
+                                        style={{ height: "300px", width: "100%" }}
+                                    >
+                                        <TileLayer
+                                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                        />
+                                        <Marker position={[location.lat, location.lng]}>
+                                            <Popup>
+                                                {location.name}<br />{location.address}
+                                            </Popup>
+                                        </Marker>
+                                    </MapContainer>
                                 </div>
                             </motion.div>
                         ))}
