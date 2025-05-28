@@ -53,12 +53,12 @@ const FoodCard = ({ food, onAddToCart }) => {
                                     ${promo.precioPromocional}
                                 </span>
                                 <span className="text-sm text-muted-foreground line-through">
-                                    ${food.price != null ? `$${food.price}` : "Precio no disponible"}
+                                    ${food.price != null ? `$${food.price.toLocaleString('de-DE')}` : "Precio no disponible"}
                                 </span>
                             </div>
                         ) : (
                                 <span>
-                                    {food.price != null ? `$${food.price}` : "Precio no disponible"}
+                                    {food.price != null ? `$${food.price.toLocaleString('de-DE')}` : "Precio no disponible"}
                                 </span>
                         )}
                     </div>

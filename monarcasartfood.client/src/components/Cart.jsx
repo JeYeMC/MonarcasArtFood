@@ -88,7 +88,7 @@ const Cart = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
                           Cantidad: {item.quantity}
                         </span>
                         <span className="text-sm font-medium">
-                          ${(item.price * (1 - (item.discount || 0) / 100))}
+                          ${(item.price * (1 - (item.discount || 0) / 100)).toLocaleString('de-DE')}
                         </span>
                       </div>
                     </div>
@@ -111,16 +111,16 @@ const Cart = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span>${subtotal}</span>
+                <span>${subtotal.toLocaleString('de-DE')}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Envío</span>
-                <span>${deliveryCost}</span>
+                <span>${deliveryCost.toLocaleString('de-DE')}</span>
               </div>
               <Separator className="my-2" />
               <div className="flex justify-between font-bold">
                 <span>Total</span>
-                <span>${totalOrderPrice}</span>
+                <span>${totalOrderPrice.toLocaleString('de-DE')}</span>
               </div>
             </div>
             
@@ -133,7 +133,7 @@ const Cart = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
               {isCheckoutOpen && (
                  <CheckoutForm 
                     cartItems={cartItems} 
-                    totalPrice={totalOrderPrice} 
+                    totalPrice={totalOrderPrice.toLocaleString('de-DE')} 
                     onWhatsAppOrder={onWhatsAppOrder}
                     closeDialog={() => setIsCheckoutOpen(false)}
                     updateDeliveryCost={updateDeliveryCostInCart}
