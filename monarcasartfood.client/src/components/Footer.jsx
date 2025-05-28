@@ -13,7 +13,7 @@ const Footer = () => {
                         </p>
                         <div className="flex space-x-4">
                             <a
-                                href="https://www.facebook.com/tuPaginaFacebook"
+                                href="https://www.facebook.com/profile.php?id=100092564154606"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-300 hover:text-white transition-colors"
@@ -22,7 +22,7 @@ const Footer = () => {
                                 <Facebook className="h-5 w-5" />
                             </a>
                             <a
-                                href="https://www.instagram.com/tuPerfilInstagram"
+                                href="https://www.instagram.com/monarcasff?utm_source=ig_web_button_share_sheet&igsh=MzJiMzQ5ZWQ2Mw=="
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-300 hover:text-white transition-colors"

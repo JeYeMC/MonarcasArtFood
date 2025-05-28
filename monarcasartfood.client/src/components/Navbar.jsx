@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Cart from "@/components/Cart";
 
 const Navbar = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
 
     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -18,8 +19,25 @@ const Navbar = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
         { name: "Contacto", href: "#contact" },
     ];
 
-    const primaryColor = "#FF9800";   // Naranja
-    const secondaryColor = "#FFC107"; // Amarillo
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+    const handleOrderNow = () => {
+        if (totalItems === 0) {
+            setAlertMessage("Selecciona los productos que deseas ordenar");
+            scrollToSection("menu");
+        } else {
+            setAlertMessage("Verifica tu pedido dando clic en el carrito");
+        }
+
+        setTimeout(() => {
+            setAlertMessage("");
+        }, 4000);
+    };
 
     return (
         <header className="sticky top-0 z-50 bg-white shadow-md">
@@ -32,8 +50,8 @@ const Navbar = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
                             transition={{ duration: 0.5 }}
                             className="text-2xl font-bold"
                             style={{
-                                color: primaryColor,
-                                marginRight: "20px" // Añade margen a la derecha
+                                color: "#FF9800",
+                                marginRight: "20px",
                             }}
                         >
                             Monarcas Fast-Food
@@ -82,7 +100,8 @@ const Navbar = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
                         <Button
                             variant="default"
                             className="hidden md:flex"
-                            style={{ backgroundColor: primaryColor, color: "white" }} // Estilos del botón "Ordenar Ahora"
+                            style={{ backgroundColor: "#FF9800", color: "white" }}
+                            onClick={handleOrderNow}
                         >
                             Ordenar Ahora
                         </Button>
@@ -98,6 +117,22 @@ const Navbar = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
                         </Button>
                     </div>
                 </div>
+
+                {/* Mensaje de alerta con estilo impecable */}
+                <AnimatePresence>
+                    {alertMessage && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed top-16 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-6 py-3 rounded shadow-lg flex items-center space-x-2 z-50 max-w-sm"
+                        >
+                            <Info className="w-5 h-5" />
+                            <span className="font-semibold">{alertMessage}</span>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Mobile Navigation */}
                 <AnimatePresence>
@@ -123,7 +158,11 @@ const Navbar = ({ cartItems, removeFromCart, clearCart, onWhatsAppOrder }) => {
                                 <Button
                                     variant="default"
                                     className="mt-2"
-                                    style={{ backgroundColor: primaryColor, color: "white" }} // Estilos del botón "Ordenar Ahora" en móvil
+                                    style={{ backgroundColor: "#FF9800", color: "white" }}
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        handleOrderNow();
+                                    }}
                                 >
                                     Ordenar Ahora
                                 </Button>
