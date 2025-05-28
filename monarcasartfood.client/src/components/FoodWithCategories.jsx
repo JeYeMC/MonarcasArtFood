@@ -7,7 +7,6 @@ import FoodCard from "./FoodCard";
 const FoodWithCategories = ({ onAddToCart }) => {
     const [categories, setCategories] = useState([]);
     const [selected, setSelected] = useState("Todos");
-
     useEffect(() => {
         axios.get("https://localhost:7105/api/Categorias")
             .then(response => {

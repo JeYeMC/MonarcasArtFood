@@ -18,7 +18,7 @@ const App = () => {
 
     const handleWhatsAppOrder = (customerInfo, deliveryCost) => {
         const orderDetails = cartItems.map(item =>
-            `${item.quantity}x ${item.name} - $${(item.precioPromocional || item.price)} (ID: ${item.id})`
+            `${item.quantity}x ${item.name} - $${(item.precioPromocional || item.price).toLocaleString('de-DE') } (ID: ${item.id})`
         ).join("\n");
 
         const subtotal = cartItems.reduce(
@@ -42,9 +42,9 @@ Número de Contacto: ${customerInfo.phone}
 Método de Pago: ${customerInfo.paymentMethod}
 -------------------------------
 RESUMEN DEL PAGO:
-Subtotal: $${subtotal}
-Costo de Envío (${barrioDisplayName}): $${deliveryCost}
-Total a Pagar: $${finalTotal}
+Subtotal: $${subtotal.toLocaleString('de-DE') }
+Costo de Envío (${barrioDisplayName}): $${deliveryCost.toLocaleString('de-DE') }
+Total a Pagar: $${finalTotal.toLocaleString('de-DE') }
 -------------------------------
 ¡Gracias!
     `;
