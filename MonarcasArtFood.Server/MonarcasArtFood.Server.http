@@ -1,0 +1,8 @@
+@MonarcasArtFood.Server_HostAddress = http://localhost:51970
+
+
+
+GET {{MonarcasArtFood.Server_HostAddress}}/producto/
+Accept: application/json
+
+###
