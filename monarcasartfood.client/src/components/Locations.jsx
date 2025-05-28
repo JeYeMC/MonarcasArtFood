@@ -8,8 +8,8 @@ const Locations = () => {
     const locations = [
         {
             id: 1,
-            name: "Monarcas Art Food",
-            address: "Cl. 40a #27-36, Bogotá, Colombia",
+            name: "Monarcas Fast-Food",
+            address: "Cl. 40a #27-36, Villa Nueva",
             hours: "6:30 - 10:00",
             phone: "+57 3138596605",
             lat: 5.063377,    // Latitud obtenida de Google Maps

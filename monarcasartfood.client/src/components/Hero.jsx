@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
+    // Función para hacer scroll suave a la sección
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <section
             id="home"
@@ -31,6 +39,7 @@ const Hero = () => {
                             <Button
                                 size="lg"
                                 className="bg-white text-primary hover:bg-gray-100"
+                                onClick={() => scrollToSection("menu")}
                             >
                                 Ver Menú <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
@@ -38,6 +47,7 @@ const Hero = () => {
                                 size="lg"
                                 variant="outline"
                                 className="border-white text-primary hover:bg-gray-100"
+                                onClick={() => scrollToSection("promotions")}
                             >
                                 Promociones
                             </Button>
