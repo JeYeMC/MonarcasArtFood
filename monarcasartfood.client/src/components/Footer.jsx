@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="text-xl font-bold mb-4">Monarcas Art Food</h3>
+            <h3 className="text-xl font-bold mb-4">Monarcas Fast-Food</h3>
             <p className="text-gray-300 mb-4">
               Deliciosa comida rápida con los mejores ingredientes, entregada directamente a tu puerta.
             </p>
@@ -56,7 +56,7 @@ const Footer = () => {
                 +57 313 859 6605
               </li>
               <li className="text-gray-300">
-                info@monarcasaf.com
+                info@monarcasff.com
               </li>
             </ul>
           </div>
@@ -80,7 +80,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Monarcas Art Food. Todos los derechos reservados.
+              © {new Date().getFullYear()} Monarcas Fast-Food. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
